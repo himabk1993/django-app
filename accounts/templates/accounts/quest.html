@@ -1,0 +1,39 @@
+<a href="../../home/"> Home</a>
+{% if error_message %}
+<h6>{{ error_message }}</h6>
+<form action="{% url 'accounts:questAdd' %}" method="POST">
+    {% csrf_token %}
+    <strong>CREATE QUESTION</strong> <br/>
+    <table>
+    <tr>
+    <td>Enter the Question </td>
+    <td><input type="text" name="question_text" required/></td>
+    </tr>
+    <tr>
+    <td>Enter the choices seperated by comma</td>
+    <td><input type="text" name="choice_text" required/></td>
+    </tr>
+    <tr>
+    <td><button>Submit</button></td>
+    </tr>
+    </table>
+</form>
+{% else %}
+<form action="{% url 'accounts:questAdd' %}" method="POST">
+        {% csrf_token %}
+        <strong>CREATE QUESTION</strong> <br/>
+        <table>
+        <tr>
+        <td>Enter the Question </td>
+        <td><input type="text" name="question_text" required/></td>
+        </tr>
+        <tr>
+        <td>Enter the choices seperated by comma</td>
+        <td><input type="text" name="choice_text" required/></td>
+        </tr>
+        <tr>
+        <td><button>Submit</button></td>
+        </tr>
+        </table>
+    </form>
+{% endif %}
